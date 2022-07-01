@@ -1,0 +1,8 @@
+<div *ngIf="msg" class="description">
+    <i>{{ msg }}</i>
+  </div>
+  <div *ngIf="!msg">
+    <h2 class="display-2 my-3">{{ pet.id ? "Edit Pet" : "New Pet" }}</h2>
+    <app-pet-form [pet]="pet" (save)="handleSave($event)"></app-pet-form>
+  </div>
+    

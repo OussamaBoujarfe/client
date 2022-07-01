@@ -1,0 +1,93 @@
+<!-- listing page -->
+<div class="row">
+    <div class="col col-lg-10">
+      <div class="display-4">My pets</div>
+    </div>
+    <div class="col col-lg-2">
+      <a class="btn app btn-danger col-lg-10 mt-4" routerLink="/pets/new" role="button">New Pet</a>
+    </div>
+  </div>
+  <br> <br><br>
+  <div *ngIf="msg" class="description">
+    <i>{{ msg }}</i>
+  </div>
+  
+  <div class="mt-5">
+    <ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "large" color = "blue" type = "ball-clip-rotate" [fullScreen] = "true"></ngx-spinner>
+    <div class="list-group">
+      <a
+        *ngFor="let pet of pets"
+        class="list-group-item list-group-item-action"
+        (click)="selectedPet = pet"
+        [routerLink]="['/pet', pet.id]"
+      >
+
+
+
+      <div class="row">
+        <div class="col col-lg-11">
+          <div class="d-flex w-100 justify-content-between align-items-center">
+            <h5 class="mb-1"> Name :{{ pet.name }}</h5>
+            <h4 class="mb-1"> Species : {{ pet.species }}</h4>
+          </div>
+          <div class="mb-1">
+            <p>
+              Note :
+              {{ pet.note | slice:0:20 }}
+              <span *ngIf="pet.note.length > 200">...</span>
+            </p>
+            
+          </div>
+          <span>Born on : </span> <small>{{ pet.dateBirth }}</small>
+          <br>      <span>died on : </span>  <small>{{ pet.dateDeath }}</small>
+        </div>
+    
+        <div class="col col-lg-1 col-12">
+          <a class="btn app btn-primary mt-3" [routerLink]="['/pet', pet.id, 'edit']" role="button">
+Edit          </a>
+        </div>
+      </div>
+      </a>
+    </div>
+    <div class="col" *ngIf="selectedPet">
+      <app-pet-form [pet]="selectedPet" (save)="handleSave($event)"></app-pet-form>
+    </div>
+  </div>
+<!--
+  <table class="table">
+    <thead>
+      <tr>
+        <th >#</th>
+        <th >Name</th>
+        <th >Species</th>
+        <th >Date of Birth</th>
+        <th >Date of Death</th>
+        <th >Note</th>
+        <th>Action</th>
+
+
+
+      </tr>
+    </thead>
+    <tbody >
+      <tr *ngFor="let pet of pets"
+      class="list-group-item list-group-item-action"
+      (click)="selectedPet = pet"
+      [routerLink]="['/pet', pet.id]">
+        <td >{{pet.id}}</td>
+        <td>{{pet.name}}</td>
+        <td>{{pet.species}}</td>
+        <td> {{pet.dateBirth}}</td>
+        <td>{{pet.dateDeath}}</td>
+
+        <td> 
+          <span >...</span></td>
+          <td>  
+            <a class="btn app btn-primary" [routerLink]="['/pet', pet.id, 'edit']" role="button">
+  Edit          </a>
+         </td>
+      </tr>
+     
+    </tbody>
+  </table>
+  -->

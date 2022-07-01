@@ -1,0 +1,35 @@
+<ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "#fff" type = "ball-clip-rotate" [fullScreen] = "true"></ngx-spinner>
+<div *ngIf="msg" class="description">
+  <i>{{ msg }}</i>
+</div>
+<div class="fieldset" *ngIf="pet.name.length != 0">
+  <div class="fieldset-header row">
+    <div class="typography col">
+      <h4 class="bold">{{ pet.name.charAt(0).toUpperCase() + pet.name.slice(1) }}</h4>
+    </div>
+    <div class="action-buttons col">
+      <p>
+        <a class="btn app btn-info mx-2" [routerLink]="['/pet', pet.id, 'edit']" role="button">
+          Edit
+        </a>
+     <!--  <button class="btn app btn-info" role="button" (click)="handleDelete()">
+          Delete
+        </button> -->
+      </p>
+    </div>
+  </div>
+  <div class="description">
+    <p>{{ pet.species }}</p>
+  </div>
+  <ul class="row">
+    <li><p><b>born on:</b> {{ pet.dateBirth }}</p></li> 
+
+  </ul>
+  <ul class="row">
+    <li><p><b>dead on:</b> {{ pet.dateDeath}}</p></li>
+  </ul>
+  <div class="description">
+    <p>{{ pet.note }}</p>
+  </div>
+</div>
+  

@@ -1,0 +1,105 @@
+<!-- new pet page -->
+<form [formGroup]="petForm" (ngSubmit)="onSubmit()">
+
+  <div class="form-group">
+    <label for="name">Name</label>
+    <input
+      type="text"
+      class="form-control"
+      id="name"
+      placeholder="Name"
+      required
+      formControlName="name"
+      [class.is-invalid]="name.invalid && (name.dirty || name.touched)"
+      [class.is-valid]="name.valid"
+    />
+
+    <div class="invalid-feedback">Please provide a name!</div>
+  </div>
+
+  <div class="form-group">
+    <label for="species">Species</label>
+
+    <select 
+    id="species"
+      placeholder="Species"
+      required
+      formControlName="species"
+      [class.is-invalid]="species.invalid && (species.dirty || species.touched)"
+      [class.is-valid]="species.valid"
+    class= "form-control">
+      <option value=""> Choose which type of animals</option>
+      <option value="Mammals">Mammals</option>
+      <option value="Birds">Birds</option>
+      <option value="Reptiles">Reptiles</option>
+    </select>
+  <!-- <input
+      type="text"
+      class="form-control"
+      id="species"
+      placeholder="Species"
+      required
+      formControlName="species"
+      [class.is-invalid]="species.invalid && (species.dirty || species.touched)"
+      [class.is-valid]="species.valid"
+    />
+    <div class="invalid-feedback">Please provide a species!</div>--> 
+  </div>
+
+
+
+
+  <div class="form-group">
+    <label for="dateBirth">Date of Birth</label>
+    <input
+      type="date"
+      class="form-control"
+      id="dateBirth"
+      placeholder="dateBirth"
+      required
+      formControlName="dateBirth"
+      [class.is-invalid]="dateBirth.invalid && (dateBirth.dirty || dateBirth.touched)"
+      [class.is-valid]="dateBirth.valid"
+    />
+    <div class="invalid-feedback">Please provide a date of birth!</div>
+  </div>
+  <div class="form-group">
+    <label for="dateDeath">Date of Death</label>
+    <input
+      type="date"
+      class="form-control"
+      id="dateDeath"
+      placeholder="dateDeath"
+    
+      formControlName="dateDeath"
+      [class.is-invalid]="dateDeath.invalid && (dateDeath.dirty || dateDeath.touched)"
+      [class.is-valid]="dateDeath.valid"
+    />
+    <div class="invalid-feedback">Please provide a dateDeath!</div>
+  </div>
+
+
+  
+  <div class="form-group">
+    <label for="note">Note</label>
+    <textarea
+      class="form-control"
+      id="note"
+      placeholder="Note"
+      rows="5"
+      required
+      formControlName="note"
+      [class.is-invalid]="note.invalid && (note.dirty || note.touched)"
+      [class.is-valid]="note.valid"
+    ></textarea>
+    <div class="invalid-feedback">Please provide a note for your pet!</div>
+  </div>
+  
+
+  <button type="submit" class="btn app btn-primary">Save</button>
+</form>
+
+
+
+
+
